@@ -2,13 +2,18 @@ package com.nojong.book.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /*
 *       @SpringBootApplication
 *       - SpringBoot Auto Config, Bean Auto Read and Create
 *       - 해당 어노테이션이 위치하는 곳부터 설정을 읽어가기 때문에 항상 최상단에 위치해야 함.
+*
+*       @EnableJpaAuditing
+*       - JPA Auditing 기능 활성화
 */
 
+@EnableJpaAuditing
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {

@@ -2,6 +2,7 @@ package com.nojong.book.springboot.service.posts;
 
 import com.nojong.book.springboot.domain.posts.Posts;
 import com.nojong.book.springboot.domain.posts.PostsRepository;
+import com.nojong.book.springboot.web.dto.PostsResponseDto;
 import com.nojong.book.springboot.web.dto.PostsSaveRequestDto;
 import com.nojong.book.springboot.web.dto.PostsUpdateRequestDto;
 import javafx.geometry.Pos;
@@ -28,5 +29,10 @@ public class PostsService {
         posts.update(requestDto.getTitle(), requestDto.getContent());
 
         return id;
+    }
+
+    public PostsResponseDto findById(Long id) {
+        Posts entity = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id = "+id));
+        return new PostsResponseDto(entity);
     }
 }

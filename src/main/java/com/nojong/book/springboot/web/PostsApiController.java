@@ -1,6 +1,7 @@
 package com.nojong.book.springboot.web;
 
 import com.nojong.book.springboot.service.posts.PostsService;
+import com.nojong.book.springboot.web.dto.PostsResponseDto;
 import com.nojong.book.springboot.web.dto.PostsSaveRequestDto;
 import com.nojong.book.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -20,4 +21,10 @@ public class PostsApiController {
     public long save(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
         return postsService.update(id, requestDto);
     }
+
+    @GetMapping("/api/v1/posts/{id}")
+    public PostsResponseDto findById (@PathVariable Long id) {
+        return postsService.findById(id);
+    }
+
 }
